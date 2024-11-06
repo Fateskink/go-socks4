@@ -4,13 +4,13 @@ import (
 	"errors"
 	"log"
 	"net/url"
+	"socks4/socks4"
 
-	socks4 "github.com/bdandy/go-socks4"
 	"golang.org/x/net/proxy"
 )
 
 func main() {
-	addr, _ := url.Parse("socks4://ip:port")
+	addr, _ := url.Parse("socks4://localhost:8080")
 
 	dialer, err := proxy.FromURL(addr, proxy.Direct)
 	conn, err := dialer.Dial("tcp", "google.com:80")
